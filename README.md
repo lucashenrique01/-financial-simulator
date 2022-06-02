@@ -1,1 +1,1 @@
-# -financial-simulator
+# financial-simulator
