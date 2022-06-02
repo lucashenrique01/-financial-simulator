@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/11948895/how-to-automatically-serialize-and-deserialize-json-string-using-jpa-and-hiberna

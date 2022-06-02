@@ -1,17 +1,17 @@
 package com.poc.insurance.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.poc.insurance.converters.JSONOjectConverter;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.poc.insurance.converters.MapToStringConverter;
 
 import javax.persistence.*;
+import java.util.Map;
 
+@Entity
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEvent;
+    private Integer idEvent;
     private String id;
     private String specVersion;
     private String source;
@@ -20,10 +20,28 @@ public class Event {
     private String subject;
     private String correlationID;
     private String dataContentType;
-    @Column(columnDefinition = "TEXT")
-    @Convert(converter = JSONOjectConverter.class)
-    private JSONObject data;
+    //@Column(columnDefinition = "TEXT")
+    //@Convert(converter = JSONOjectConverter.class)
+    //private JSONObject data;
+    @Column(name = "mapvalue")
+    @Convert(converter = MapToStringConverter.class)
+    private Map<String, Object> data;
 
+    public Integer getIdEvent() {
+        return idEvent;
+    }
+
+    public Map<String, Object> getData() {
+        return data;
+    }
+
+    public void setData(Map<String, Object> data) {
+        this.data = data;
+    }
+
+    public void setIdEvent(Integer idEvent) {
+        this.idEvent = idEvent;
+    }
 
     public String getId() {
         return id;
@@ -89,12 +107,5 @@ public class Event {
         this.dataContentType = dataContentType;
     }
 
-    public JSONObject getData() {
-        return this.data;
-    }
 
-    public void setData(JSONObject data) {
-
-        this.data = data;
-    }
 }

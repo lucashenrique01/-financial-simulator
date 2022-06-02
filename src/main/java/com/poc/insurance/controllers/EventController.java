@@ -2,11 +2,10 @@ package com.poc.insurance.controllers;
 
 import com.poc.insurance.models.Event;
 import com.poc.insurance.rest.facadeKafka.ClientFacade;
+import com.poc.insurance.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,15 +15,19 @@ public class EventController {
     @Autowired
     private ClientFacade clientFacade;
 
-    @PostMapping
-    void post(@RequestBody Event event){
-        clientFacade.postEvent(event);
+    @Autowired
+    private EventService eventService;
+
+    @PostMapping("/api-events")
+    void post(@RequestBody Event newEvent){
+        clientFacade.postEvent(eventService.sendEventToBroker(newEvent));
     }
 
-    @GetMapping
+
+    @GetMapping("/api-events")
     ResponseEntity get(){
-        List<Event> eventos = new ArrayList<>();
-        eventos = clientFacade.get();
+        List<Event> eventos = clientFacade.get();
         return ResponseEntity.status(200).body(eventos);
     }
+
 }
