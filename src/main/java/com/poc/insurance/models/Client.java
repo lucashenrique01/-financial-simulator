@@ -11,12 +11,12 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String idCliente;
+    private String clientId;
     private String nomeCliente;
     private String documentoIdentificacao;
 
-    public Client(String idCliente, String nomeCliente, String documentoIdentificacao) {
-        this.idCliente = idCliente;
+    public Client(String clientId, String nomeCliente, String documentoIdentificacao) {
+        this.clientId = clientId;
         this.nomeCliente = nomeCliente;
         this.documentoIdentificacao = documentoIdentificacao;
     }
@@ -28,12 +28,12 @@ public class Client {
         return id;
     }
 
-    public String getIdCliente() {
-        return idCliente;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+    public void setClientId(String idCliente) {
+        this.clientId = idCliente;
     }
 
     public String getNomeCliente() {

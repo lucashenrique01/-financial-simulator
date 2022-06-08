@@ -9,13 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.poc</groupId>
-	<artifactId>insurance</artifactId>
+	<artifactId>financial-simulator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>insurance</name>
+	<name>financial-simulator</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.3-SNAPSHOT</spring-cloud.version>
+		<start-class>com.poc.insurance.InsuranceApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -75,6 +76,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.shared</groupId>
+						<artifactId>maven-filtering</artifactId>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<fork>true</fork>
+					<mainClass>com.poc.insurance.InsuranceApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

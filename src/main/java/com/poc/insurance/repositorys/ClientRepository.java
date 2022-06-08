@@ -9,5 +9,5 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
 
     List<Client> findAll();
 
-    Client findByIdClient(String idClient);
+    Client findByClientId(String idClient);
 }

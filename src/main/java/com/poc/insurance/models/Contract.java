@@ -11,12 +11,12 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String idContrato;
+    private String contratoId;
     private Double valorContratado;
     private Double valorDoBem;
 
     public Contract(String idContrato, Double valorContratado, Double valorDoBem) {
-        this.idContrato = idContrato;
+        this.contratoId = idContrato;
         this.valorContratado = valorContratado;
         this.valorDoBem = valorDoBem;
     }
@@ -28,12 +28,12 @@ public class Contract {
         return id;
     }
 
-    public String getIdContrato() {
-        return idContrato;
+    public String getContratoId() {
+        return contratoId;
     }
 
-    public void setIdContrato(String idContrato) {
-        this.idContrato = idContrato;
+    public void setContratoId(String contratoId) {
+        this.contratoId = contratoId;
     }
 
     public Double getValorContratado() {

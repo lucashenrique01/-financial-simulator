@@ -3,6 +3,7 @@ package com.poc.insurance.controllers;
 import com.poc.insurance.models.Event;
 import com.poc.insurance.rest.facadeKafka.ClientFacade;
 import com.poc.insurance.services.EventService;
+import com.poc.insurance.services.FinancialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,8 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    @PostMapping("/api-events")
-    void post(@RequestBody Event newEvent){
-        clientFacade.postEvent(eventService.sendEventToBroker(newEvent));
-    }
-
+    @Autowired
+    private FinancialService financialService;
 
     @GetMapping("/api-events")
     ResponseEntity get(){

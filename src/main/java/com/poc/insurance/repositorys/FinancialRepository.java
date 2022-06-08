@@ -9,5 +9,5 @@ public interface FinancialRepository extends CrudRepository<Financial, Integer> 
 
     List<Financial> findAll();
 
-    Financial findByClientIdAndContractId(String idClient, String idContract);
+    Financial findByClientIdAndContractId(Integer idClient, Integer idContract);
 }

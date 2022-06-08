@@ -10,5 +10,5 @@ public interface ContractRepository extends CrudRepository<Contract, Integer> {
 
     List<Contract> findAll();
 
-    Contract findByIdContrato(String idClient);
+    Contract findByContratoId(String idClient);
 }
